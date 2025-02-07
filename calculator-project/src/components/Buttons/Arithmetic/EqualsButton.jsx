@@ -24,6 +24,8 @@ function EqualsButton() {
         break;
     }
 
+    function handleDivision(quotient, divisor) {}
+
     setSavedValue({});
     setOutput(newValue);
   }

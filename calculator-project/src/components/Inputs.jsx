@@ -1,11 +1,8 @@
 import BackspaceButton from "./Buttons/Manipulation/BackspaceButton";
 import NumberButton from "./Buttons/NumberButton";
-import AddButton from "./Buttons/Arithmetic/AddButton";
-import DivButton from "./Buttons/Arithmetic/DivButton";
 import EqualsButton from "./Buttons/Arithmetic/EqualsButton";
-import MultButton from "./Buttons/Arithmetic/MultButton";
-import SubButton from "./Buttons/Arithmetic/SubButton";
 import "./Inputs.css";
+import ArithmeticButton from "./Buttons/Arithmetic/ArithmeticButton";
 
 function Inputs() {
   return (
@@ -26,10 +23,10 @@ function Inputs() {
         <NumberButton num={0} />
       </div>
       <div className="arithmetic">
-        <DivButton />
-        <MultButton />
-        <SubButton />
-        <AddButton />
+        <ArithmeticButton operation="div" />
+        <ArithmeticButton operation="mult" />
+        <ArithmeticButton operation="sub" />
+        <ArithmeticButton operation="add" />
         <EqualsButton />
       </div>
     </div>
