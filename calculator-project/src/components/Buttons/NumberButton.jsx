@@ -1,12 +1,24 @@
 import { useCalculator } from "../../context";
 
 function NumberButton(props) {
-  const { output, setOutput } = useCalculator();
+  const { outputData, setOutputData } = useCalculator();
+
+  const currentData = { ...outputData };
 
   function updateOutput() {
-    let num = output;
-    num = num * 10 + props.num;
-    setOutput(num);
+    let newValue = currentData.value;
+
+    if (currentData.isOnDecimal == true || currentData.isFloat == true) {
+      currentData.currentDec++;
+      newValue = newValue + props.num / 10 ** currentData.currentDec;
+      currentData.value = parseFloat(newValue.toFixed(currentData.currentDec));
+      currentData.isOnDecimal = false;
+    } else {
+      newValue = newValue * 10 + props.num;
+      currentData.value = newValue;
+    }
+
+    setOutputData(currentData);
   }
 
   return (

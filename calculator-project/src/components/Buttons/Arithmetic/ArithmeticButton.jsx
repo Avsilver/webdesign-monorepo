@@ -1,7 +1,8 @@
 import { useCalculator } from "../../../context";
 
 function ArithmeticButton(props) {
-  const { output, setOutput, savedValue, setSavedValue } = useCalculator();
+  const { outputData, setOutputData, savedValue, setSavedValue } =
+    useCalculator();
 
   const operators = {
     add: "+",
@@ -17,13 +18,13 @@ function ArithmeticButton(props) {
 
     const operation = {
       hasSaved: true,
-      value: output,
+      value: outputData.value,
       operation: props.operation,
-      savedString: `${output} ${currOperator}`,
+      savedString: `${outputData.value} ${currOperator}`,
     };
 
     setSavedValue(operation);
-    setOutput(0);
+    setOutputData({ ...outputData, value: 0 });
   }
 
   return (

@@ -1,6 +1,7 @@
 import { useCalculator } from "../../../context";
 function EqualsButton() {
-  const { savedValue, setSavedValue, output, setOutput } = useCalculator();
+  const { savedValue, setSavedValue, outputData, setOutputData } =
+    useCalculator();
 
   function performOperation() {
     if (savedValue.hasSaved == false) return;
@@ -8,26 +9,31 @@ function EqualsButton() {
 
     switch (savedValue.operation) {
       case "add":
-        newValue = savedValue.value + output;
+        newValue = savedValue.value + outputData.value;
         break;
       case "sub":
-        newValue = savedValue.value - output;
+        newValue = savedValue.value - outputData.value;
         break;
       case "mult":
-        newValue = savedValue.value * output;
+        newValue = savedValue.value * outputData.value;
         break;
       case "div":
-        if (output == 0) return;
-        newValue = savedValue.value / output;
+        if (outputData.value == 0) return;
+        newValue = savedValue.value / outputData.value;
         break;
       default:
         break;
     }
 
-    function handleDivision(quotient, divisor) {}
+    const resetData = {
+      value: newValue,
+      isOnDecimal: false,
+      isFloat: false,
+      currentDec: savedValue.currentDec,
+    };
 
     setSavedValue({});
-    setOutput(newValue);
+    setOutputData(resetData);
   }
 
   return (

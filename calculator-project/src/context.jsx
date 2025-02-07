@@ -3,7 +3,13 @@ import { createContext, useContext, useState } from "react";
 const CalculatorContext = createContext({});
 
 const CalculatorProvider = ({ children }) => {
-  const [output, setOutput] = useState(0);
+  const [outputData, setOutputData] = useState({
+    value: 0,
+    isOnDecimal: false,
+    isFloat: false,
+    currentDec: 0,
+  });
+
   const [savedValue, setSavedValue] = useState({
     hasSaved: false,
     value: 0,
@@ -12,8 +18,8 @@ const CalculatorProvider = ({ children }) => {
   });
 
   const value = {
-    output,
-    setOutput,
+    outputData,
+    setOutputData,
     savedValue,
     setSavedValue,
   };

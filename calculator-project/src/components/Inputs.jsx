@@ -3,6 +3,7 @@ import NumberButton from "./Buttons/NumberButton";
 import EqualsButton from "./Buttons/Arithmetic/EqualsButton";
 import "./Inputs.css";
 import ArithmeticButton from "./Buttons/Arithmetic/ArithmeticButton";
+import DecimalButton from "./Buttons/Arithmetic/DecimalButton";
 
 function Inputs() {
   return (
@@ -21,6 +22,7 @@ function Inputs() {
         <NumberButton num={2} />
         <NumberButton num={3} />
         <NumberButton num={0} />
+        <DecimalButton />
       </div>
       <div className="arithmetic">
         <ArithmeticButton operation="div" />
