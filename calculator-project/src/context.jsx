@@ -8,6 +8,7 @@ const CalculatorProvider = ({ children }) => {
     hasSaved: false,
     value: 0,
     operation: "none",
+    savedString: "",
   });
 
   const value = {
