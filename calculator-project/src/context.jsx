@@ -4,10 +4,17 @@ const CalculatorContext = createContext({});
 
 const CalculatorProvider = ({ children }) => {
   const [output, setOutput] = useState(0);
+  const [savedValue, setSavedValue] = useState({
+    hasSaved: false,
+    value: 0,
+    operation: "none",
+  });
 
   const value = {
     output,
     setOutput,
+    savedValue,
+    setSavedValue,
   };
 
   return (

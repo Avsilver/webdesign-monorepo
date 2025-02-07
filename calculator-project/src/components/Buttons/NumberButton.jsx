@@ -1,5 +1,4 @@
-import { useContext, useEffect } from "react";
-import { useCalculator } from "../context";
+import { useCalculator } from "../../context";
 
 function NumberButton(props) {
   const { output, setOutput } = useCalculator();

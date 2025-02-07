@@ -24,46 +24,24 @@
 }
 
 .output-container {
-  height: 40%;
+  height: 30%;
   background-color: hsl(41, 56%, 59%);
   display: flex;
   flex-direction: column;
   justify-content: end;
 }
 
-.output-text {
-  background: hsl(41, 56%, 69%);
+.output-values {
+  background: hsl(41, 56%, 59%);
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-end;
   padding-right: 0.5rem;
   font-size: 3rem;
 }
 
-.buttons {
-  display: grid;
-  grid-gap: 3px;
-  grid-template-columns: repeat(3, 1fr);
-  justify-items: center;
-  align-items: center;
-}
-
-.input {
-  background-color: hsl(240, 1%, 20%);
-  border: none;
-  border-radius: 50%;
-  width: 5rem;
-  height: 5rem;
-
-  font-size: 2rem;
-  font-weight: 100;
-  transition: background-color 0.25s;
-}
-
-.input:hover {
-  background-color: hsl(240, 1%, 30%);
-}
-
-.input:active {
-  background-color: hsl(240, 1%, 40%);
+.output-saved {
+  font-size: 1.4rem;
+  color: hsl(0, 0%, 89%);
+  padding-right: 1rem;
 }
