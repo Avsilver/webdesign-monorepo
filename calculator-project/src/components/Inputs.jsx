@@ -3,6 +3,8 @@ import NumberButton from "./Buttons/NumberButton";
 import EqualsButton from "./Buttons/EqualsButton";
 import ArithmeticButton from "./Buttons/ArithmeticButton";
 import DecimalButton from "./Buttons/DecimalButton";
+import NegativeButton from "./Buttons/NegativeButton";
+import PercentButton from "./Buttons/PercentButton";
 import "./Inputs.css";
 
 function Inputs() {
@@ -10,6 +12,8 @@ function Inputs() {
     <div className="buttons">
       <div className="output-manipulation">
         <BackspaceButton></BackspaceButton>
+        <NegativeButton></NegativeButton>
+        <PercentButton></PercentButton>
       </div>
       <div className="numbers">
         <NumberButton num={"7"} />

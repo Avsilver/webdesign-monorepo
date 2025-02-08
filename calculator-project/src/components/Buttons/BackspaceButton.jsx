@@ -9,7 +9,12 @@ function BackspaceButton() {
   function handleBackspace() {
     console.log("Backspace");
     const currentData = { ...screenData };
+
+    if (currentData.value.toString().charAt(-1) == ".") {
+      currentData.isFloat = false;
+    }
     currentData.value = currentData.value.toString().slice(0, -1);
+
     if (!currentData.value) {
       resetScreenData();
     } else {
@@ -18,7 +23,7 @@ function BackspaceButton() {
   }
 
   return (
-    <button className="input" onClick={handleBackspace}>
+    <button className="input arith" onClick={handleBackspace}>
       {delText}
     </button>
   );

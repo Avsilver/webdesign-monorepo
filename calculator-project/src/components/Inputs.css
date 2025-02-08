@@ -29,6 +29,7 @@
   display: grid;
   row-gap: 4px;
 }
+
 .input {
   background-color: hsl(240, 1%, 20%);
   border: none;
@@ -47,4 +48,16 @@
 
 .input:active {
   background-color: hsl(240, 1%, 40%);
+}
+
+.arith {
+  background: hsl(41, 56%, 59%);
+}
+
+.arith:hover {
+  background: hsl(41, 56%, 69%);
+}
+
+.arith:active {
+  background: hsl(41, 56%, 79%);
 }

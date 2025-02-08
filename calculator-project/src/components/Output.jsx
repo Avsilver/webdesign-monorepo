@@ -22,14 +22,23 @@ function Output() {
   //Update when screenData changed
 
   function getOutput() {
-    return screenData.value;
+    if (Number.isNaN(screenData.value)) {
+      console.log(screenData.value + " is not a number");
+      resetScreenData();
+    }
+
+    if (screenData.isFloat) {
+      return screenData.value;
+    } else {
+      return Number(screenData.value);
+    }
   }
 
   return (
     <div className="output-container">
       <div className="output-values">
         {showSaved()}
-        <div className="output-text">{Number(getOutput())}</div>
+        <div className="output-text">{getOutput()}</div>
       </div>
     </div>
   );

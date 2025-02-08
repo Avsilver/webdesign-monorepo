@@ -23,7 +23,7 @@ function ArithmeticButton(props) {
   }
 
   return (
-    <button className="input" onClick={handleAppendOperation}>
+    <button className="input arith" onClick={handleAppendOperation}>
       {currOperator}
     </button>
   );

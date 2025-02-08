@@ -15,12 +15,20 @@ const CalculatorProvider = ({ children }) => {
     setScreenData({ value: 0, isFloat: false, digitAfterDecimal: 0 });
   };
 
+  const roundFloat = (fl) => {
+    if (Math.abs(fl % 0.000001) > 0) {
+      fl = Number(fl.toFixed(6));
+    }
+    return fl;
+  };
+
   const value = {
     screenData,
     setScreenData,
     operationStack,
     setOperationStack,
     resetScreenData,
+    roundFloat,
   };
 
   return (
