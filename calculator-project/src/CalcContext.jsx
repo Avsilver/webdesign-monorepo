@@ -3,19 +3,32 @@ import { createContext, useContext, useState } from "react";
 const CalculatorContext = createContext({});
 
 const CalculatorProvider = ({ children }) => {
-  const [output, setOutput] = useState(0);
-  const [savedValue, setSavedValue] = useState({
-    hasSaved: false,
+  const [screenData, setScreenData] = useState({
     value: 0,
-    operation: "none",
-    savedString: "",
+    isFloat: false,
+    digitAfterDecimal: 0,
   });
 
+  const [operationStack, setOperationStack] = useState([]);
+
+  const resetScreenData = () => {
+    setScreenData({ value: 0, isFloat: false, digitAfterDecimal: 0 });
+  };
+
+  const roundFloat = (fl) => {
+    if (Math.abs(fl % 0.000001) > 0) {
+      fl = Number(fl.toFixed(6));
+    }
+    return fl;
+  };
+
   const value = {
-    output,
-    setOutput,
-    savedValue,
-    setSavedValue,
+    screenData,
+    setScreenData,
+    operationStack,
+    setOperationStack,
+    resetScreenData,
+    roundFloat,
   };
 
   return (

@@ -1,10 +1,10 @@
-import BackspaceButton from "./Buttons/Manipulation/BackspaceButton";
+import BackspaceButton from "./Buttons/BackspaceButton";
 import NumberButton from "./Buttons/NumberButton";
-import AddButton from "./Buttons/Arithmetic/AddButton";
-import DivButton from "./Buttons/Arithmetic/DivButton";
-import EqualsButton from "./Buttons/Arithmetic/EqualsButton";
-import MultButton from "./Buttons/Arithmetic/MultButton";
-import SubButton from "./Buttons/Arithmetic/SubButton";
+import EqualsButton from "./Buttons/EqualsButton";
+import ArithmeticButton from "./Buttons/ArithmeticButton";
+import DecimalButton from "./Buttons/DecimalButton";
+import NegativeButton from "./Buttons/NegativeButton";
+import PercentButton from "./Buttons/PercentButton";
 import "./Inputs.css";
 
 function Inputs() {
@@ -12,24 +12,27 @@ function Inputs() {
     <div className="buttons">
       <div className="output-manipulation">
         <BackspaceButton></BackspaceButton>
+        <NegativeButton></NegativeButton>
+        <PercentButton></PercentButton>
       </div>
       <div className="numbers">
-        <NumberButton num={7} />
-        <NumberButton num={8} />
-        <NumberButton num={9} />
-        <NumberButton num={4} />
-        <NumberButton num={5} />
-        <NumberButton num={6} />
-        <NumberButton num={1} />
-        <NumberButton num={2} />
-        <NumberButton num={3} />
-        <NumberButton num={0} />
+        <NumberButton num={"7"} />
+        <NumberButton num={"8"} />
+        <NumberButton num={"9"} />
+        <NumberButton num={"4"} />
+        <NumberButton num={"5"} />
+        <NumberButton num={"6"} />
+        <NumberButton num={"1"} />
+        <NumberButton num={"2"} />
+        <NumberButton num={"3"} />
+        <NumberButton num={"0"} />
+        <DecimalButton />
       </div>
       <div className="arithmetic">
-        <DivButton />
-        <MultButton />
-        <SubButton />
-        <AddButton />
+        <ArithmeticButton operation="div" />
+        <ArithmeticButton operation="mult" />
+        <ArithmeticButton operation="sub" />
+        <ArithmeticButton operation="add" />
         <EqualsButton />
       </div>
     </div>

@@ -1,14 +1,36 @@
-import { useContext } from "react";
-import { useCalculator } from "../context";
+import { useCalculator } from "../CalcContext";
+import { useEffect } from "react";
 
 function Output() {
-  const { output, savedValue } = useCalculator();
+  const { screenData, resetScreenData, operationStack } = useCalculator();
 
   function showSaved() {
-    if (savedValue.hasSaved == true) {
-      return <div className="output-saved">{savedValue.savedString}</div>;
+    let outputString = "";
+
+    for (let op of operationStack) {
+      outputString = `${outputString} ${Number(op.value)} ${op.operation}`;
+    }
+
+    return <div className="output-saved">{outputString}</div>;
+  }
+
+  //Log When stack changed
+  useEffect(() => {
+    console.log(operationStack);
+  }, [operationStack]);
+
+  //Update when screenData changed
+
+  function getOutput() {
+    if (Number.isNaN(screenData.value)) {
+      console.log(screenData.value + " is not a number");
+      resetScreenData();
+    }
+
+    if (screenData.isFloat) {
+      return screenData.value;
     } else {
-      return null;
+      return Number(screenData.value);
     }
   }
 
@@ -16,7 +38,7 @@ function Output() {
     <div className="output-container">
       <div className="output-values">
         {showSaved()}
-        <div className="output-text">{output}</div>
+        <div className="output-text">{getOutput()}</div>
       </div>
     </div>
   );

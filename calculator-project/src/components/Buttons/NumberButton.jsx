@@ -1,16 +1,20 @@
-import { useCalculator } from "../../context";
+import { useCalculator } from "../../CalcContext";
 
 function NumberButton(props) {
-  const { output, setOutput } = useCalculator();
+  const { screenData, setScreenData, roundFloat } = useCalculator();
 
-  function updateOutput() {
-    let num = output;
-    num = num * 10 + props.num;
-    setOutput(num);
+  function handleNumberClick() {
+    const currentData = { ...screenData };
+    if (currentData.isFloat) {
+      currentData.value = currentData.value + props.num;
+    } else {
+      currentData.value = Number(currentData.value + props.num);
+    }
+    setScreenData(currentData);
   }
 
   return (
-    <button className="input" onClick={updateOutput}>
+    <button className="input" onClick={handleNumberClick}>
       {props.num}
     </button>
   );
