@@ -7,7 +7,7 @@ function DecimalButton() {
     const currentData = { ...screenData };
     if (!currentData.value.toString().includes(".")) {
       currentData.value = currentData.value + ".";
-      currentData.isFloat = true;
+      currentData.isFloat = true; 
     }
     setScreenData(currentData);
   }
