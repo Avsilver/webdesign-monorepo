@@ -1,40 +1,35 @@
-import { useContext } from "react";
-import { useCalculator } from "../context";
+import { useCalculator } from "../CalcContext";
+import { useEffect } from "react";
 
 function Output() {
-  const { outputData, savedValue } = useCalculator();
+  const { screenData, resetScreenData, operationStack } = useCalculator();
 
   function showSaved() {
-    if (savedValue.hasSaved == true) {
-      return <div className="output-saved">{savedValue.savedString}</div>;
-    } else {
-      return null;
+    let outputString = "";
+
+    for (let op of operationStack) {
+      outputString = `${outputString} ${Number(op.value)} ${op.operation}`;
     }
+
+    return <div className="output-saved">{outputString}</div>;
   }
+
+  //Log When stack changed
+  useEffect(() => {
+    console.log(operationStack);
+  }, [operationStack]);
+
+  //Update when screenData changed
 
   function getOutput() {
-    logData();
-    let outputString = outputData.value;
-    if (outputData.isOnDecimal) {
-      outputString += ".";
-    } else if (outputData.isFloat) {
-      outputString = outputData.value.toFixed(outputData.currentDec);
-    }
-    return outputString;
-  }
-
-  function logData() {
-    console.log("Current Value: " + outputData.value);
-    console.log("isOnDecimal: " + outputData.isOnDecimal);
-    console.log("IsFloat: " + outputData.isFloat);
-    console.log("Current Decimal Index: " + outputData.currentDec);
+    return screenData.value;
   }
 
   return (
     <div className="output-container">
       <div className="output-values">
         {showSaved()}
-        <div className="output-text">{getOutput()}</div>
+        <div className="output-text">{Number(getOutput())}</div>
       </div>
     </div>
   );

@@ -1,6 +1,5 @@
-import { useState, createContext } from "react";
 import Output from "./components/Output";
-import { CalculatorProvider } from "./context";
+import { CalculatorProvider } from "./CalcContext";
 import Inputs from "./components/Inputs";
 
 function App() {

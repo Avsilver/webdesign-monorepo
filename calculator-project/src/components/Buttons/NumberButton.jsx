@@ -1,28 +1,16 @@
-import { useCalculator } from "../../context";
+import { useCalculator } from "../../CalcContext";
 
 function NumberButton(props) {
-  const { outputData, setOutputData } = useCalculator();
+  const { screenData, setScreenData } = useCalculator();
 
-  const currentData = { ...outputData };
-
-  function updateOutput() {
-    let newValue = currentData.value;
-
-    if (currentData.isOnDecimal == true || currentData.isFloat == true) {
-      currentData.currentDec++;
-      newValue = newValue + props.num / 10 ** currentData.currentDec;
-      currentData.value = parseFloat(newValue.toFixed(currentData.currentDec));
-      currentData.isOnDecimal = false;
-    } else {
-      newValue = newValue * 10 + props.num;
-      currentData.value = newValue;
-    }
-
-    setOutputData(currentData);
+  function handleNumberClick() {
+    const currentData = { ...screenData };
+    currentData.value = currentData.value + props.num;
+    setScreenData(currentData);
   }
 
   return (
-    <button className="input" onClick={updateOutput}>
+    <button className="input" onClick={handleNumberClick}>
       {props.num}
     </button>
   );

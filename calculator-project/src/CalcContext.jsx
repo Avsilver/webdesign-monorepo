@@ -3,25 +3,24 @@ import { createContext, useContext, useState } from "react";
 const CalculatorContext = createContext({});
 
 const CalculatorProvider = ({ children }) => {
-  const [outputData, setOutputData] = useState({
+  const [screenData, setScreenData] = useState({
     value: 0,
-    isOnDecimal: false,
     isFloat: false,
-    currentDec: 0,
+    digitAfterDecimal: 0,
   });
 
-  const [savedValue, setSavedValue] = useState({
-    hasSaved: false,
-    value: 0,
-    operation: "none",
-    savedString: "",
-  });
+  const [operationStack, setOperationStack] = useState([]);
+
+  const resetScreenData = () => {
+    setScreenData({ value: 0, isFloat: false, digitAfterDecimal: 0 });
+  };
 
   const value = {
-    outputData,
-    setOutputData,
-    savedValue,
-    setSavedValue,
+    screenData,
+    setScreenData,
+    operationStack,
+    setOperationStack,
+    resetScreenData,
   };
 
   return (
